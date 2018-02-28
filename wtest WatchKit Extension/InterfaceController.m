@@ -11,7 +11,7 @@
 #import "WatchBroadcaster.h"
 
 @interface InterfaceController () {
-    NSUInteger _count;
+    NSInteger _count;
 }
 
 @property IBOutlet WKInterfaceLabel* label;
@@ -41,7 +41,7 @@
 - (void)changeNumber:(NSInteger)n {
     dispatch_async(dispatch_get_main_queue(), ^{
         _count = n;
-        [self.label setText:[NSString stringWithFormat:@"%lu", (unsigned long)_count]];
+        [self.label setText:[NSString stringWithFormat:@"%ld", (unsigned long)_count]];
     });
 }
 
@@ -52,7 +52,8 @@
 }
 
 - (IBAction)onButtonClick:(id)sender {
-    [self changeNumber:_count+1];
+    [self changeNumber:_count-1];
+    [((ExtensionDelegate*)WKExtension.sharedExtension.delegate).broadcaster sendMessage:@{@"number": @-1}];
 }
 
 # pragma mark - DataReceiver

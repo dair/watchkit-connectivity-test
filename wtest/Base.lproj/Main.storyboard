@@ -28,15 +28,27 @@
                                     <action selector="onButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BIT-DM-Cyn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTM-cn-D7f">
+                                <rect key="frame" x="16" y="20" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="sTM-cn-D7f" firstAttribute="leading" secondItem="Uee-0j-aNJ" secondAttribute="leading" constant="16" id="0rh-gE-8Bg"/>
                             <constraint firstItem="raI-ER-oct" firstAttribute="leading" secondItem="Uee-0j-aNJ" secondAttribute="leading" constant="60" id="9bQ-0a-wU5"/>
+                            <constraint firstItem="Uee-0j-aNJ" firstAttribute="trailing" secondItem="sTM-cn-D7f" secondAttribute="trailing" constant="16" id="AqL-Mu-BKe"/>
                             <constraint firstItem="Uee-0j-aNJ" firstAttribute="bottom" secondItem="raI-ER-oct" secondAttribute="bottom" constant="60" id="C67-Io-mjh"/>
+                            <constraint firstItem="sTM-cn-D7f" firstAttribute="top" secondItem="Uee-0j-aNJ" secondAttribute="top" id="GMq-yN-zIp"/>
                             <constraint firstItem="Uee-0j-aNJ" firstAttribute="trailing" secondItem="raI-ER-oct" secondAttribute="trailing" constant="60" id="H4r-Di-THJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uee-0j-aNJ"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="sTM-cn-D7f" id="A6k-cs-0H9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

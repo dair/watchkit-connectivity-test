@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
-@interface ViewController ()
+@interface ViewController () {
+    NSInteger _count;
+}
+
+@property IBOutlet UILabel* label;
 
 @end
 
@@ -19,23 +23,46 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[(AppDelegate*)UIApplication.sharedApplication.delegate broadcaster] addDelegate:self];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [[(AppDelegate*)UIApplication.sharedApplication.delegate broadcaster] removeDelegate:self];
+    [super viewDidDisappear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)onButtonClick:(id)sender {
+    [self changeNumber:_count+1];
     [[(AppDelegate*)[[UIApplication sharedApplication] delegate] broadcaster] sendMessage:@{@"number": @1}];
+
+}
+
+- (void)changeNumber:(NSInteger)n {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _count = n;
+        [self.label setText:[NSString stringWithFormat:@"%ld", (unsigned long)_count]];
+    });
 }
 
 - (void)didReceiveApplicationContext:(NSDictionary<NSString *,id> *)applicationContext {
-
+    NSNumber* num = [applicationContext objectForKey:@"number"];
+    if (num) {
+        [self changeNumber:num.integerValue];
+    }
 }
 
 - (void)didReceiveMessage:(NSDictionary<NSString *,id> *)message {
-    
+    NSNumber* num = [message objectForKey:@"number"];
+    if (num) {
+        [self changeNumber:_count + num.integerValue];
+    }
 }
 
 @end
