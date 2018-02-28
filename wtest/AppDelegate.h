@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WatchBroadcaster.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (readonly) WatchBroadcaster* broadcaster;
 
 @end
-

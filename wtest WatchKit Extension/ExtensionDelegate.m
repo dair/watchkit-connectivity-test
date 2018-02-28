@@ -7,11 +7,18 @@
 //
 
 #import "ExtensionDelegate.h"
+#import <WatchConnectivity/WatchConnectivity.h>
+
+@interface ExtensionDelegate () {
+}
+
+@end
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching {
     // Perform any final initialization of your application.
+    _broadcaster = [WatchBroadcaster new];
 }
 
 - (void)applicationDidBecomeActive {
@@ -29,23 +36,23 @@
         // Check the Class of each task to decide how to process it
         if ([task isKindOfClass:[WKApplicationRefreshBackgroundTask class]]) {
             // Be sure to complete the background task once you’re done.
-            WKApplicationRefreshBackgroundTask *backgroundTask = (WKApplicationRefreshBackgroundTask*)task;
-            [backgroundTask setTaskCompletedWithSnapshot:NO];
+//            WKApplicationRefreshBackgroundTask *backgroundTask = (WKApplicationRefreshBackgroundTask*)task;
+//            [backgroundTask setTaskCompletedWithSnapshot:NO];
         } else if ([task isKindOfClass:[WKSnapshotRefreshBackgroundTask class]]) {
             // Snapshot tasks have a unique completion call, make sure to set your expiration date
             WKSnapshotRefreshBackgroundTask *snapshotTask = (WKSnapshotRefreshBackgroundTask*)task;
             [snapshotTask setTaskCompletedWithDefaultStateRestored:YES estimatedSnapshotExpiration:[NSDate distantFuture] userInfo:nil];
         } else if ([task isKindOfClass:[WKWatchConnectivityRefreshBackgroundTask class]]) {
             // Be sure to complete the background task once you’re done.
-            WKWatchConnectivityRefreshBackgroundTask *backgroundTask = (WKWatchConnectivityRefreshBackgroundTask*)task;
-            [backgroundTask setTaskCompletedWithSnapshot:NO];
+//            WKWatchConnectivityRefreshBackgroundTask *backgroundTask = (WKWatchConnectivityRefreshBackgroundTask*)task;
+//            [backgroundTask setTaskCompletedWithSnapshot:NO];
         } else if ([task isKindOfClass:[WKURLSessionRefreshBackgroundTask class]]) {
             // Be sure to complete the background task once you’re done.
-            WKURLSessionRefreshBackgroundTask *backgroundTask = (WKURLSessionRefreshBackgroundTask*)task;
-            [backgroundTask setTaskCompletedWithSnapshot:NO];
+//            WKURLSessionRefreshBackgroundTask *backgroundTask = (WKURLSessionRefreshBackgroundTask*)task;
+//            [backgroundTask setTaskCompletedWithSnapshot:NO];
         } else {
             // make sure to complete unhandled task types
-            [task setTaskCompletedWithSnapshot:NO];
+//            [task setTaskCompletedWithSnapshot:NO];
         }
     }
 }

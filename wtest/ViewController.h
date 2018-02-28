@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WatchBroadcaster.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <WatchBroadcasterDelegate>
 
 
 @end

@@ -7,9 +7,14 @@
 //
 
 #import "InterfaceController.h"
+#import "ExtensionDelegate.h"
+#import "WatchBroadcaster.h"
 
+@interface InterfaceController () {
+    NSUInteger _count;
+}
 
-@interface InterfaceController ()
+@property IBOutlet WKInterfaceLabel* label;
 
 @end
 
@@ -19,20 +24,50 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
 
+    _count = 0;
+
     // Configure interface objects here.
 }
 
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
+
+    [self.label setText:[NSString stringWithFormat:@"%lu", (unsigned long)_count]];
+
+    [((ExtensionDelegate*)WKExtension.sharedExtension.delegate).broadcaster addDelegate:self];
+}
+
+- (void)changeNumber:(NSInteger)n {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _count = n;
+        [self.label setText:[NSString stringWithFormat:@"%lu", (unsigned long)_count]];
+    });
 }
 
 - (void)didDeactivate {
+    [((ExtensionDelegate*)WKExtension.sharedExtension.delegate).broadcaster removeDelegate:self];
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
 }
 
+- (IBAction)onButtonClick:(id)sender {
+    [self changeNumber:_count+1];
+}
+
+# pragma mark - DataReceiver
+- (void)didReceiveApplicationContext:(NSDictionary<NSString *,id> *)applicationContext {
+    NSNumber* num = [applicationContext objectForKey:@"number"];
+    if (num) {
+        [self changeNumber:num.integerValue];
+    }
+}
+
+- (void)didReceiveMessage:(NSDictionary<NSString *,id> *)message {
+    NSNumber* num = [message objectForKey:@"number"];
+    if (num) {
+        [self changeNumber:_count + num.integerValue];
+    }
+}
+
 @end
-
-
-

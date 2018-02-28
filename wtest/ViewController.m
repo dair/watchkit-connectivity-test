@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "AppDelegate.h"
 @interface ViewController ()
 
 @end
@@ -25,5 +25,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)onButtonClick:(id)sender {
+    [[(AppDelegate*)[[UIApplication sharedApplication] delegate] broadcaster] sendMessage:@{@"number": @1}];
+}
+
+- (void)didReceiveApplicationContext:(NSDictionary<NSString *,id> *)applicationContext {
+
+}
+
+- (void)didReceiveMessage:(NSDictionary<NSString *,id> *)message {
+    
+}
 
 @end

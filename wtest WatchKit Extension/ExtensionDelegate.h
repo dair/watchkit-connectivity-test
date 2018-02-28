@@ -7,7 +7,10 @@
 //
 
 #import <WatchKit/WatchKit.h>
+#import "WatchBroadcaster.h"
 
 @interface ExtensionDelegate : NSObject <WKExtensionDelegate>
+
+@property (nonatomic) WatchBroadcaster* broadcaster;
 
 @end

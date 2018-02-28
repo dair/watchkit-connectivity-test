@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABC0C6C52046B78B00B19D3D /* WatchBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0C6C42046B78B00B19D3D /* WatchBroadcaster.m */; };
+		ABC0C6C62046B78B00B19D3D /* WatchBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC0C6C42046B78B00B19D3D /* WatchBroadcaster.m */; };
 		ABF93A3F2045ABB700A37E7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF93A3E2045ABB700A37E7D /* AppDelegate.m */; };
 		ABF93A422045ABB700A37E7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF93A412045ABB700A37E7D /* ViewController.m */; };
 		ABF93A452045ABB700A37E7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF93A432045ABB700A37E7D /* Main.storyboard */; };
@@ -66,6 +68,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ABC0C6C32046B78B00B19D3D /* WatchBroadcaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchBroadcaster.h; sourceTree = "<group>"; };
+		ABC0C6C42046B78B00B19D3D /* WatchBroadcaster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchBroadcaster.m; sourceTree = "<group>"; };
 		ABF93A3A2045ABB700A37E7D /* wtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF93A3D2045ABB700A37E7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABF93A3E2045ABB700A37E7D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				ABF93A482045ABB700A37E7D /* LaunchScreen.storyboard */,
 				ABF93A4B2045ABB700A37E7D /* Info.plist */,
 				ABF93A4C2045ABB700A37E7D /* main.m */,
+				ABC0C6C32046B78B00B19D3D /* WatchBroadcaster.h */,
+				ABC0C6C42046B78B00B19D3D /* WatchBroadcaster.m */,
 			);
 			path = wtest;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 			files = (
 				ABF93A422045ABB700A37E7D /* ViewController.m in Sources */,
 				ABF93A4D2045ABB700A37E7D /* main.m in Sources */,
+				ABC0C6C52046B78B00B19D3D /* WatchBroadcaster.m in Sources */,
 				ABF93A3F2045ABB700A37E7D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +325,7 @@
 			files = (
 				ABF93A692045ABB700A37E7D /* ExtensionDelegate.m in Sources */,
 				ABF93A662045ABB700A37E7D /* InterfaceController.m in Sources */,
+				ABC0C6C62046B78B00B19D3D /* WatchBroadcaster.m in Sources */,
 				ABF93A6C2045ABB700A37E7D /* NotificationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,7 +490,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -499,7 +507,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -516,7 +524,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -533,7 +541,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
