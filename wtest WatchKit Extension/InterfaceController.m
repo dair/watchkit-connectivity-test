@@ -53,21 +53,14 @@
 
 - (IBAction)onButtonClick:(id)sender {
     [self changeNumber:_count-1];
-    [((ExtensionDelegate*)WKExtension.sharedExtension.delegate).broadcaster sendMessage:@{@"number": @-1}];
+    [((ExtensionDelegate*)WKExtension.sharedExtension.delegate).broadcaster sendApplicationContext:@{@"number": @(_count-1)}];
 }
 
 # pragma mark - DataReceiver
 - (void)didReceiveApplicationContext:(NSDictionary<NSString *,id> *)applicationContext {
     NSNumber* num = [applicationContext objectForKey:@"number"];
-    if (num) {
+    if (num != nil) {
         [self changeNumber:num.integerValue];
-    }
-}
-
-- (void)didReceiveMessage:(NSDictionary<NSString *,id> *)message {
-    NSNumber* num = [message objectForKey:@"number"];
-    if (num) {
-        [self changeNumber:_count + num.integerValue];
     }
 }
 

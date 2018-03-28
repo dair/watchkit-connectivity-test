@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
@@ -15,7 +14,7 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
                         <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="ErO-2f-gAZ"/>
-                        <button width="1" alignment="left" title="Button" id="g1J-Cd-NDw">
+                        <button width="1" alignment="left" title="Decrement" id="g1J-Cd-NDw">
                             <connections>
                                 <action selector="onButtonClick:" destination="AgC-eL-Hgc" id="vQf-Er-gzF"/>
                             </connections>

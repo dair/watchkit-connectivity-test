@@ -48,15 +48,9 @@
 }
 
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString*,id>*)message {
-    for (id<WatchBroadcasterDelegate> delegate in _delegates) {
-        [delegate didReceiveMessage:message];
-    }
 }
 
 - (void)session:(WCSession*)session didReceiveMessage:(NSDictionary<NSString*, id>*)message replyHandler:(void(^)(NSDictionary<NSString*, id> *replyMessage))replyHandler {
-    for (id<WatchBroadcasterDelegate> delegate in _delegates) {
-        [delegate didReceiveMessage:message];
-    }
     replyHandler(@{});
 }
 
@@ -70,23 +64,8 @@
     //
 }
 
-
 - (void)sessionDidDeactivate:(nonnull WCSession *)session {
     //
-}
-
-- (void)sendMessage:(NSDictionary<NSString *,id> *)message {
-    if (_session.activationState == WCSessionActivationStateActivated) {
-        [_session sendMessage:message
-                 replyHandler:^(NSDictionary<NSString *,id> * _Nonnull replyMessage) {
-                     // ??
-                     NSLog(@"%s: %@", __PRETTY_FUNCTION__, replyMessage);
-                 }
-                 errorHandler:^(NSError * _Nonnull error) {
-                     //
-                     NSLog(@"%s: %@", __PRETTY_FUNCTION__, error);
-                 }];
-    }
 }
 
 - (void)sendApplicationContext:(NSDictionary<NSString *,id> *)applicationContext {

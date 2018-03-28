@@ -11,7 +11,6 @@
 
 @protocol WatchBroadcasterDelegate <NSObject>
 
-- (void)didReceiveMessage:(NSDictionary<NSString *,id> *)message;
 - (void)didReceiveApplicationContext:(NSDictionary<NSString *,id> *)applicationContext;
 
 @end
@@ -21,7 +20,6 @@
 - (void)addDelegate:(id<WatchBroadcasterDelegate>)delegate;
 - (void)removeDelegate:(id<WatchBroadcasterDelegate>)delegate;
 
-- (void)sendMessage:(NSDictionary<NSString *,id> *)message;
 - (void)sendApplicationContext:(NSDictionary<NSString *,id> *)applicationContext;
 
 @end

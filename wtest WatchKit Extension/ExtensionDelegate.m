@@ -8,6 +8,7 @@
 
 #import "ExtensionDelegate.h"
 #import <WatchConnectivity/WatchConnectivity.h>
+#import <UserNotifications/UserNotifications.h>
 
 @interface ExtensionDelegate () {
 }
@@ -19,6 +20,7 @@
 - (void)applicationDidFinishLaunching {
     // Perform any final initialization of your application.
     _broadcaster = [WatchBroadcaster new];
+    [_broadcaster addDelegate:self];
 }
 
 - (void)applicationDidBecomeActive {
@@ -54,6 +56,28 @@
             // make sure to complete unhandled task types
 //            [task setTaskCompletedWithSnapshot:NO];
         }
+    }
+}
+
+- (void)didReceiveApplicationContext:(NSDictionary<NSString *,id> *)applicationContext {
+    NSNumber* num = [applicationContext objectForKey:@"number"];
+    WKApplicationState state = [[WKExtension sharedExtension] applicationState];
+
+    if (state != WKApplicationStateActive) {
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionAlert|UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {
+
+            UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
+            content.title = @"ZERO title";
+            content.body = [NSString stringWithFormat:@"Got number: %ld", (long)[num integerValue]];
+            content.sound = [UNNotificationSound defaultSound];
+            NSString* identifier = [NSString stringWithFormat:@"%f", [NSDate date].timeIntervalSince1970];
+            UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (error != nil) {
+                    NSLog(@"Error adding notification: %@", error);
+                }
+            }];
+        }];
     }
 }
 

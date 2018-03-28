@@ -19,9 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raI-ER-oct">
-                                <rect key="frame" x="60" y="577" width="255" height="30"/>
+                                <rect key="frame" x="60" y="487" width="255" height="120"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.776611328125" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Add">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="08D-r5-EQ6"/>
+                                </constraints>
+                                <state key="normal" title="Increment">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>

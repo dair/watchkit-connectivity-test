@@ -40,8 +40,7 @@
 
 - (IBAction)onButtonClick:(id)sender {
     [self changeNumber:_count+1];
-    [[(AppDelegate*)[[UIApplication sharedApplication] delegate] broadcaster] sendMessage:@{@"number": @1}];
-
+    [[(AppDelegate*)[[UIApplication sharedApplication] delegate] broadcaster] sendApplicationContext:@{@"number": @(_count+1)}];
 }
 
 - (void)changeNumber:(NSInteger)n {
@@ -55,13 +54,6 @@
     NSNumber* num = [applicationContext objectForKey:@"number"];
     if (num) {
         [self changeNumber:num.integerValue];
-    }
-}
-
-- (void)didReceiveMessage:(NSDictionary<NSString *,id> *)message {
-    NSNumber* num = [message objectForKey:@"number"];
-    if (num) {
-        [self changeNumber:_count + num.integerValue];
     }
 }
 
